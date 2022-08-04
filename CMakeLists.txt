@@ -5,7 +5,7 @@ include(${CMAKE_CURRENT_SOURCE_DIR}/cmake_helpers/helpers.cmake)
 set(CMAKE_MODULE_PATH 
 	${CMAKE_MODULE_PATH} ${CMAKE_MODULE_PATH}/cmake_helpers/find_modules)
 
-project(Texts LANGUAGES CXX)	#first instance the project and the language
+project(Managers LANGUAGES CXX)	#first instance the project and the language
 
 if(UNIX)
 	set(SDL2_image_name SDL2_image)
@@ -48,23 +48,19 @@ enable_target_warnings(${PROJECT_NAME})
 target_include_directories(
 ${PROJECT_NAME} 
 	PRIVATE 
-		${_BASE_DIR}
-		PRIVATE
-		${SDL2_INCLUDE_DIR}
-		${SDL2_image_INCLUDE_DIR}
-		${SDL2_MIXER_INCLUDE_DIR}
-		${SDL2_TTF_INCLUDE_DIR}
+		${_INC_DIR}
+#		PRIVATE
+#		${SDL2_INCLUDE_DIR}
+#		${SDL2_image_INCLUDE_DIR}
+#		${SDL2_MIXER_INCLUDE_DIR}
+#		${SDL2_TTF_INCLUDE_DIR}
 
 )
 target_link_libraries(
 ${PROJECT_NAME} 
 	PRIVATE 
-		utils		#we include our library we just made
-		sdl_utils
-		${SDL2_LIBRARY}
-		${SDL2_IMAGE_LIBRARY}
-		${SDL2_TTF_LIBRARY}
-		${SDL2_MIXER_LIBRARY}
+		manager_utils 	#our binary will link to manager_utils that will link all the other libraries
+
 )
 
 if(CMAKE_BUILD_TYPE MATCHES Release)
@@ -84,5 +80,5 @@ endif()
 
 add_subdirectory(utils)	#we will import the directory and we will inherit there our variables made here
 add_subdirectory(sdl_utils)
-
+add_subdirectory(manager_utils) #we add the NAME OF THE FOLDER(not the executable in the cmake file)
 

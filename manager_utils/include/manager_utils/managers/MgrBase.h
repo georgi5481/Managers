@@ -1,0 +1,31 @@
+#ifndef MANAGER_UTILS_INCLUDE_MANAGER_UTILS_MANAGERS_MGRBASE_H_
+#define MANAGER_UTILS_INCLUDE_MANAGER_UTILS_MANAGERS_MGRBASE_H_
+//C system includes
+
+//C++ system includes
+
+
+//3rd-party includes
+
+//Own includes
+
+//Forward Declaration
+
+
+class MgrBase {
+public:
+
+	virtual ~MgrBase() = default;	//making the destructor virtual will make automatically all other members virtuals
+
+	MgrBase(const MgrBase& other) = delete;	//copy constructor
+	MgrBase(MgrBase&& other) = delete;		//move constructor
+	//forbid the copy and move constructors
+	//forbid the copy and move assignment operators
+
+	MgrBase& operator=(const MgrBase& other) = delete;	//copy-assignment operator
+	MgrBase& operator=(MgrBase&& other) = delete;	//move-assignment operator
+	virtual void deinit() = 0;
+	virtual void process() = 0;
+};
+
+#endif /* MANAGER_UTILS_INCLUDE_MANAGER_UTILS_MANAGERS_MGRBASE_H_ */

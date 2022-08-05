@@ -16,6 +16,18 @@
 
 class DrawMgr : public MgrBase {
 public:
+	DrawMgr() = default;
+
+	DrawMgr(const DrawMgr& other) = delete;	//copy constructor
+	DrawMgr(DrawMgr&& other) = delete;		//move constructor
+
+	DrawMgr& operator=(const DrawMgr& other) = delete;	//copy-assignment operator
+	DrawMgr& operator=(DrawMgr&& other) = delete;	//move-assignment operator
+
+	int32_t init();	//we dont make the init methor virtual cuz every singleton will take configuration that is different
+
+	virtual void deinit() = 0;
+	virtual void process() = 0;
 
 private:
 	MonitorWindow _window;

@@ -11,8 +11,7 @@
 
 //Own includes
 #include "Game/Game.h"
-#include "sdl_utils/MonitorWindow.h"
-#include "sdl_utils/Renderer.h"
+
 #include "sdl_utils/InputEvent.h"
 #include "sdl_utils/containers/ImageContainer.h"
 #include "sdl_utils/containers/TextContainer.h"
@@ -35,9 +34,7 @@ private:
 
 	void limitFPS(int64_t elapsedTimeMicroSeconds);
 
-	MonitorWindow _window;
 	InputEvent _event;
-	Renderer _renderer;
 	ImageContainer _imgContainer;
 	TextContainer _textContainer;
 	Game _game;

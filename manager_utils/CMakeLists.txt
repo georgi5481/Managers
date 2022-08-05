@@ -9,8 +9,10 @@ set(_SRC_DIR ${CMAKE_CURRENT_SOURCE_DIR}/src)
 add_library(
 	${PROJECT_NAME} STATIC
 
-#	${_INC_DIR}/containers/TextContainer.h	
-	${_SRC_DIR}/dummy.cpp
+	${_INC_DIR}/managers/MgrBase.h	
+	${_INC_DIR}/managers/DrawMgr.h	
+	
+	${_SRC_DIR}/managers/DrawMgr.cpp
 	
 )
 

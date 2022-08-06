@@ -31,7 +31,7 @@ static std::string getFilePath(const std::string& relativePath){
 #ifdef RELEASE_BUILD
 	return relativePath;
 #else
-	return relativePath;
+	return "../" + relativePath;
 #endif
 }
 

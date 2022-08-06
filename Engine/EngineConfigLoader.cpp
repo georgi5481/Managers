@@ -36,6 +36,9 @@ static std::string getFilePath(const std::string& relativePath){
 	return relativePath;
 #endif
 }
+
+
+
 static void populateMonitorConfig(MonitorWindowCfg& cfg){
 	cfg.windowName = WINDOW_NAME;
 	cfg.windowWidth = WINDOW_WIDTH;
@@ -43,6 +46,10 @@ static void populateMonitorConfig(MonitorWindowCfg& cfg){
 	cfg.windowFlags = WINDOW_SHOWN;
 }
 
+static void populateDrawMgrConfig(DrawMgrCfg& cfg){		//for better reading when configuring cown bellow
+
+	populateMonitorConfig(cfg.windowCfg);
+}
 
 
 static void populateGameConfig(GameCfg& cfg){
@@ -50,6 +57,7 @@ static void populateGameConfig(GameCfg& cfg){
 	cfg.pressKeysRsrcId = TextureId::PRESS_KEYS;
 	cfg.textFontId = FontId::ANGELINE_VINTAGE_40;	//place unique key for our flyweight design pattern
 }
+
 
 
 
@@ -84,7 +92,7 @@ static void populateTextContainerConfig(TextContainerCfg& cfg){
 EngineConfig EngineConfigLoader::loadConfig(){
 	EngineConfig cfg;
 
-	populateMonitorConfig(cfg.windowCfg);
+	populateDrawMgrConfig(cfg.drawMgrCfg);
 	populateImageContainerConfig(cfg.imageContainerCfg);
 	populateTextContainerConfig(cfg.textContainerCfg);
 	populateGameConfig(cfg.gameCfg);

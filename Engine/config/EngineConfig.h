@@ -9,7 +9,7 @@
 //3rd-party includes
 
 //Own includes
-#include "sdl_utils/config/MonitorWindowCfg.h"
+#include "manager_utils/config/DrawMgrCfg.h"
 #include "sdl_utils/config/ImageContainerCfg.h"
 #include "sdl_utils/config/TextContainerCfg.h"
 #include "Game/config/GameCfg.h"
@@ -18,7 +18,7 @@
 
 
 struct EngineConfig{
-	MonitorWindowCfg windowCfg;
+	DrawMgrCfg drawMgrCfg;
 	ImageContainerCfg imageContainerCfg;
 	TextContainerCfg textContainerCfg;
 	GameCfg gameCfg;

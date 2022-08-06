@@ -16,7 +16,7 @@
 
 struct DrawMgrCfg{
 	MonitorWindowCfg windowCfg;
-	 int64_t maxFrameRate;
+	int64_t maxFrameRate;
 };
 
 #endif /* MANAGER_UTILS_INCLUDE_MANAGER_UTILS_CONFIG_DRAWMGRCFG_H_ */

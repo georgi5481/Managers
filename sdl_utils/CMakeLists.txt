@@ -42,13 +42,12 @@ ${PROJECT_NAME}
 		${SDL2_image_INCLUDE_DIR}
 		${SDL2_MIXER_INCLUDE_DIR}
 		${SDL2_TTF_INCLUDE_DIR}
-	
 )
 
 target_link_libraries(
 ${PROJECT_NAME} 
 		PUBLIC
-		utils	#we include our library we just made
+		utils	#we include the other libraries we made
 		
 		PRIVATE 
 		${SDL2_LIBRARY}

@@ -7,13 +7,11 @@
 #include <cstdint>
 #include <cstdlib>
 #include <string>
-//3rd-party includes
 
-//own include
-#include "sdl_utils/SDLLoader.h"
-#include "sdl_utils/MonitorWindow.h"
 #include "Engine/Engine.h"
 #include "Engine/EngineConfigLoader.h"
+#include "sdl_utils/SDLLoader.h"
+#include "sdl_utils/MonitorWindow.h"
 
 static int32_t runAplication(){
 Engine engine;

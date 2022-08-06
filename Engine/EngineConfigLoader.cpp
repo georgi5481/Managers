@@ -1,8 +1,6 @@
 //Corresponding header
-#include "EngineConfigLoader.h"
-//C system includes
+#include "Engine/EngineConfigLoader.h"
 
-//C++ system includes
 #include<cstdint>
 
 //3rd-party includes
@@ -10,12 +8,11 @@
 
 //Own includes
 #include "common/commonDefines.h"
-#include "sdl_utils/containers/TextContainer.h"
 
 //constants
 namespace{		//the anonymous namespace will work only on this .cpp file
-constexpr auto WINDOW_WIDTH = 1000;
-constexpr auto WINDOW_HEIGHT = 800;
+constexpr auto WINDOW_WIDTH = 800;
+constexpr auto WINDOW_HEIGHT = 600;
 constexpr auto WINDOW_NAME = "Texts";
 
 

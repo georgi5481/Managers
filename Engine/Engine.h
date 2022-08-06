@@ -6,12 +6,10 @@
 //C++ system includes
 #include<cstdint>
 
-
 //3rd-party includes
 
 //Own includes
 #include "Game/Game.h"
-
 #include "sdl_utils/InputEvent.h"
 #include "sdl_utils/containers/ImageContainer.h"
 #include "sdl_utils/containers/TextContainer.h"

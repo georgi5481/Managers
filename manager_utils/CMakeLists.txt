@@ -13,6 +13,7 @@ add_library(
 	
 	${_INC_DIR}/managers/MgrBase.h	
 	${_INC_DIR}/managers/DrawMgr.h	
+
 	
 	${_SRC_DIR}/managers/DrawMgr.cpp
 	

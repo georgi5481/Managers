@@ -8,9 +8,12 @@
 //3rd-party includes
 
 //Own includes
+#include "manager_utils/config/DrawMgrCfg.h"
+
+
 DrawMgr *gDrawMgr = nullptr;
 
-int32_t DrawMgr::init(DrawMgrCfg& cfg){
+int32_t DrawMgr::init(const DrawMgrCfg& cfg){
 	if (EXIT_SUCCESS != _window.init(cfg.windowCfg)){		//load the size of the window
 			std::cerr << "loadResources() failed. Reason: " << std::endl;
 			return EXIT_FAILURE;

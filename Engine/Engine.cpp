@@ -1,29 +1,35 @@
 //Corresponding header
 #include "Engine/Engine.h"
 
-//C system includes
+//C headers
 
-//C++ system includes
-#include<cstdint>
-#include<stdlib.h>
+//C++ headers
 #include<iostream>
 
-//3rd-party includes
-//#include<thread>
-//#include<SDL_ttf.h>
-
-//Own includes
+//own includes
 #include "Engine/config/EngineConfig.h"
 #include "manager_utils/managers/DrawMgr.h"
+
 #include "utils/thread/ThreadUtils.h"
 #include "utils/Time/Time.h"
+
 #include "sdl_utils/Texture.h"
+#include "utils/drawings/Color.h"
 
 
 
 int32_t Engine::init(const EngineConfig& cfg){
 
+	gDrawMgr = new DrawMgr();
 
+	if(gDrawMgr == nullptr) {
+		std::cerr << "Error, bad alloc for DrawMgr" << std::endl;
+			return EXIT_FAILURE;
+	}
+	if (EXIT_SUCCESS != gDrawMgr->init(cfg.drawMgrCfg)){
+			std::cerr << "gDrawMgr init() failed. Reason: " << std::endl;
+			return EXIT_FAILURE;
+	}
 
 	if (EXIT_SUCCESS != _imgContainer.init(cfg.imageContainerCfg)){		//initialising the image container logic (a simple map  with int as ID and string as the path)
 			std::cerr << "imgContainer init() failed. Reason: " << std::endl;
@@ -58,6 +64,10 @@ void Engine::deinit(){	//always deinitialise backwards according to initialising
 	_imgContainer.deinit();
 	_textContainer.deinit();
 
+
+	gDrawMgr->deinit();
+	delete gDrawMgr;
+	gDrawMgr = nullptr;
 }
 
 void Engine::start(){
@@ -82,7 +92,7 @@ while(true){
 
 void Engine::drawFrame(){
 
-
+	gDrawMgr->clearScreen();	//first clear the screen
 
 	std::vector<DrawParams> images;
 
@@ -104,7 +114,9 @@ void Engine::drawFrame(){
 									<< " for rsrcId : " << image.rsrcId << std::endl;
 			continue;
 		}
+		gDrawMgr->addDrawCmd(image, texture);
 	}
+	gDrawMgr->finishFrame();
 }
 
 

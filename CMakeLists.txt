@@ -22,15 +22,15 @@ endif()
 	find_package(${SDL2_ttf_name} REQUIRED)
 	find_package(${SDL2_mixer_name} REQUIRED)
 
-set(_BASE_DIR ${CMAKE_CURRENT_SOURCE_DIR})	#set a variable name
+set(_BASE_DIR ${CMAKE_CURRENT_SOURCE_DIR})	#set _BASE_DIR as a variable to be set to the current path
 
 add_executable(
 	${PROJECT_NAME} 	
 	${_BASE_DIR}/common/commonDefines.h
 
-	${_BASE_DIR}/Engine/config/EngineConfig.h
 	${_BASE_DIR}/Engine/Engine.h
 	${_BASE_DIR}/Engine/Engine.cpp
+	${_BASE_DIR}/Engine/config/EngineConfig.h
 	${_BASE_DIR}/Engine/EngineConfigLoader.h
 	${_BASE_DIR}/Engine/EngineConfigLoader.cpp 
 	
@@ -38,7 +38,6 @@ add_executable(
 	${_BASE_DIR}/Game/Game.cpp
 	${_BASE_DIR}/Game/config/GameCfg.h
 	
-
 	${_BASE_DIR}/main.cpp
 	)
 
@@ -48,17 +47,11 @@ enable_target_warnings(${PROJECT_NAME})
 target_include_directories(
 ${PROJECT_NAME} 
 	PRIVATE 
-		${_INC_DIR}
-#		PRIVATE
-#		${SDL2_INCLUDE_DIR}
-#		${SDL2_image_INCLUDE_DIR}
-#		${SDL2_MIXER_INCLUDE_DIR}
-#		${SDL2_TTF_INCLUDE_DIR}
-
+		${_BASE_DIR}
 )
 target_link_libraries(
 ${PROJECT_NAME} 
-	PRIVATE 
+	PUBLIC 
 		manager_utils 	#our binary will link to manager_utils that will link all the other libraries
 
 )
@@ -66,7 +59,8 @@ ${PROJECT_NAME}
 if(CMAKE_BUILD_TYPE MATCHES Release)
 	target_compile_definitions(
 		${PROJECT_NAME}
-		PRIVATE_HEADER-DRELEASE_BUILD=1
+		PRIVATE
+		-DRELEASE_BUILD=1
 	)
 
 #this is a bash script for copying the resource folder
@@ -80,5 +74,5 @@ endif()
 
 add_subdirectory(utils)	#we will import the directory and we will inherit there our variables made here
 add_subdirectory(sdl_utils)
-add_subdirectory(manager_utils) #we add the NAME OF THE FOLDER(not the executable in the cmake file)
+add_subdirectory(manager_utils) #we add the NAME OF THE FOLDER!!! (not the executable in the cmake file)
 

@@ -26,7 +26,7 @@ public:
 	DrawMgr& operator=(const DrawMgr& other) = delete;	//copy-assignment operator
 	DrawMgr& operator=(DrawMgr&& other) = delete;	//move-assignment operator
 
-	int32_t init(DrawMgrCfg& cfg);	//we dont make the init methor virtual cuz every singleton will take configuration that is different
+	int32_t init(const DrawMgrCfg& cfg);	//we dont make the init methor virtual cuz every singleton will take configuration that is different
 
 	void deinit() final; 	//removing the virtual keyword cuz we place it on the top of the chain
 	void process() final; 	//and placing the 'final' keyword (instead of override) cuz this means that this is gonna be the last overriding in the chain
@@ -37,12 +37,11 @@ public:
 	void addDrawCmd(const DrawParams& drawParams, SDL_Texture* texture);
 
 
-
 private:
 	MonitorWindow _window;
 	Renderer _renderer;
 
-	//hod maximum fram rate cap
+	//hold maximum frame rate cap
 	uint32_t _maxFrames{0};
 };
 

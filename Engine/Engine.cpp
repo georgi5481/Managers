@@ -14,6 +14,7 @@
 
 //Own includes
 #include "Engine/config/EngineConfig.h"
+#include "manager_utils/managers/DrawMgr.h"
 #include "utils/thread/ThreadUtils.h"
 #include "utils/Time/Time.h"
 #include "sdl_utils/Texture.h"
@@ -22,15 +23,7 @@
 
 int32_t Engine::init(const EngineConfig& cfg){
 
-	if (EXIT_SUCCESS != _window.init(cfg.windowCfg)){		//load the size of the window
-			std::cerr << "loadResources() failed. Reason: " << std::endl;
-			return EXIT_FAILURE;
-	}
 
-	if (EXIT_SUCCESS != _renderer.init(_window.getWindow())){		//get the render algorithm
-			std::cerr << "render init() failed. Reason: " << std::endl;
-			return EXIT_FAILURE;
-	}
 
 	if (EXIT_SUCCESS != _imgContainer.init(cfg.imageContainerCfg)){		//initialising the image container logic (a simple map  with int as ID and string as the path)
 			std::cerr << "imgContainer init() failed. Reason: " << std::endl;
@@ -64,8 +57,7 @@ void Engine::deinit(){	//always deinitialise backwards according to initialising
 	_event.deinit();
 	_imgContainer.deinit();
 	_textContainer.deinit();
-	_renderer.deinit();
-	_window.deinit();
+
 }
 
 void Engine::start(){
@@ -90,7 +82,7 @@ while(true){
 
 void Engine::drawFrame(){
 
-	_renderer.clearScreen();	//always start with clearing the screen
+
 
 	std::vector<DrawParams> images;
 
@@ -112,12 +104,7 @@ void Engine::drawFrame(){
 									<< " for rsrcId : " << image.rsrcId << std::endl;
 			continue;
 		}
-
-		_renderer.renderTexture(texture,image);
-
 	}
-
-	_renderer.finishFrame();
 }
 
 

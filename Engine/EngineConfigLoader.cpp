@@ -25,6 +25,7 @@ constexpr auto PRESS_KEYS_HEIGHT = 480;
 constexpr auto LAYER_2_IMG_WIDTH = 160;
 constexpr auto LAER_2_IMG_HEIGHT = 120;
 
+constexpr auto MAX_FRAMERATE = 30;
 
 constexpr auto ANGELINE_VINTAGE_40_FONTSIZE = 120;	//we can load the same font with a different size аt the same time
 }
@@ -49,6 +50,8 @@ static void populateMonitorConfig(MonitorWindowCfg& cfg){
 static void populateDrawMgrConfig(DrawMgrCfg& cfg){		//for better reading when configuring cown bellow
 
 	populateMonitorConfig(cfg.windowCfg);
+
+	cfg.maxFrameRate = MAX_FRAMERATE;
 }
 
 

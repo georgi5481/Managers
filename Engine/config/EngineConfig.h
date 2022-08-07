@@ -10,8 +10,7 @@
 
 //Own includes
 #include "manager_utils/config/DrawMgrCfg.h"
-#include "sdl_utils/config/ImageContainerCfg.h"
-#include "sdl_utils/config/TextContainerCfg.h"
+#include "manager_utils/config/RsrcMgrCfg.h"
 #include "Game/config/GameCfg.h"
 
 //Forward Declaration
@@ -19,8 +18,7 @@
 
 struct EngineConfig{
 	DrawMgrCfg drawMgrCfg;
-	ImageContainerCfg imageContainerCfg;
-	TextContainerCfg textContainerCfg;
+	RsrcMgrCfg rsrcMgrCfg;
 	GameCfg gameCfg;
 };
 

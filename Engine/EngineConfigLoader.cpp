@@ -35,32 +35,6 @@ static std::string getFilePath(const std::string& relativePath){
 #endif
 }
 
-
-
-static void populateMonitorConfig(MonitorWindowCfg& cfg){
-	cfg.windowName = WINDOW_NAME;
-	cfg.windowWidth = WINDOW_WIDTH;
-	cfg.windowHeight = WINDOW_HEIGHT;
-	cfg.windowFlags = WINDOW_SHOWN;
-}
-
-static void populateDrawMgrConfig(DrawMgrCfg& cfg){		//for better reading when configuring cown bellow
-
-	populateMonitorConfig(cfg.windowCfg);
-
-	cfg.maxFrameRate = MAX_FRAMERATE;
-}
-
-
-static void populateGameConfig(GameCfg& cfg){
-	cfg.layer2RsrcId = TextureId::LAYER_2;
-	cfg.pressKeysRsrcId = TextureId::PRESS_KEYS;
-	cfg.textFontId = FontId::ANGELINE_VINTAGE_40;	//place unique key for our flyweight design pattern
-}
-
-
-
-
 static void populateImageContainerConfig(ImageContainerCfg& cfg){
 
 	ImageCfg imageCfg;
@@ -89,12 +63,44 @@ static void populateTextContainerConfig(TextContainerCfg& cfg){
 }
 
 
+static void populateMonitorConfig(MonitorWindowCfg& cfg){
+	cfg.windowName = WINDOW_NAME;
+	cfg.windowWidth = WINDOW_WIDTH;
+	cfg.windowHeight = WINDOW_HEIGHT;
+	cfg.windowFlags = WINDOW_SHOWN;
+}
+
+static void populateRsrcMgrConfig(RsrcMgrCfg& cfg){		//for better reading when configuring cown bellow
+
+	populateImageContainerConfig(cfg.imageContainerCfg);
+	populateTextContainerConfig(cfg.textContainerCfg);
+}
+
+
+static void populateDrawMgrConfig(DrawMgrCfg& cfg){		//for better reading when configuring cown bellow
+
+	populateMonitorConfig(cfg.windowCfg);
+
+	cfg.maxFrameRate = MAX_FRAMERATE;
+}
+
+
+static void populateGameConfig(GameCfg& cfg){
+	cfg.layer2RsrcId = TextureId::LAYER_2;
+	cfg.pressKeysRsrcId = TextureId::PRESS_KEYS;
+	cfg.textFontId = FontId::ANGELINE_VINTAGE_40;	//place unique key for our flyweight design pattern
+}
+
+
+
+
+
+
 EngineConfig EngineConfigLoader::loadConfig(){
 	EngineConfig cfg;
 
 	populateDrawMgrConfig(cfg.drawMgrCfg);
-	populateImageContainerConfig(cfg.imageContainerCfg);
-	populateTextContainerConfig(cfg.textContainerCfg);
+	populateRsrcMgrConfig(cfg.rsrcMgrCfg);
 	populateGameConfig(cfg.gameCfg);
 
 	return cfg;

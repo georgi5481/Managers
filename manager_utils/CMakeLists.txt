@@ -10,11 +10,13 @@ add_library(
 	${PROJECT_NAME} STATIC
 
 	${_INC_DIR}/config/DrawMgrCfg.h		#we have two separate directories after manager_utils
+	${_INC_DIR}/config/RsrcMgrCfg.h		
 	
 	${_INC_DIR}/managers/MgrBase.h	
+	${_INC_DIR}/managers/RsrcMgr.h
 	${_INC_DIR}/managers/DrawMgr.h	
 
-	
+	${_SRC_DIR}/managers/RsrcMgr.cpp
 	${_SRC_DIR}/managers/DrawMgr.cpp
 	
 )

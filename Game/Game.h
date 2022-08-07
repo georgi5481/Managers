@@ -16,16 +16,13 @@
 
 //Forward Declaration
 struct InputEvent;
-struct ImageContainer;
-struct TextContainer;
-
 
 class Game {
 public:
 
-	int32_t init(const GameCfg& cfg, const ImageContainer* imageContainerInterface, TextContainer* textContainerInterface);
+	int32_t init(const GameCfg& cfg);
 	void deinit();
-	void draw(std::vector<DrawParams>& outImages);
+	void draw();
 	void handleEvent(const InputEvent& e);
 
 private:
@@ -38,10 +35,6 @@ private:
 
 
 	bool isPressTextHidden = false;
-
-	//TODO: remove me later !!!
-	const ImageContainer* _imgContainer = nullptr;
-	TextContainer* _textContainer = nullptr;		//we use non constant pointer cuz our functions now make/change some things
 
 };
 

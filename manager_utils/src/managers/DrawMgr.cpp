@@ -9,7 +9,7 @@
 
 //Own includes
 #include "manager_utils/config/DrawMgrCfg.h"
-
+#include "manager_utils/managers/RsrcMgr.h"
 
 DrawMgr *gDrawMgr = nullptr;
 
@@ -49,8 +49,24 @@ void DrawMgr::finishFrame(){
 	_renderer.finishFrame();
 }
 
-void DrawMgr::addDrawCmd(const DrawParams& drawParams, SDL_Texture* texture){
+void DrawMgr::addDrawCmd(const DrawParams& drawParams){
+
+	SDL_Texture* texture = getTextureInternal(drawParams);
 	_renderer.renderTexture(texture,drawParams);
 }
 
+SDL_Texture* getTextureInternal(const DrawParams& drawParams) const{
+
+	if(WidgetType::IMAGE == drawParams.widgetType){
+		return gRsrcMgr->getImageTexture(drawParams.rsrcId);
+	}
+	else if(WidgetType::TEXT == drawParams.widgetType){
+		return gRsrcMgr->getTextTexture(drawParams.textId);
+	}
+	else{
+		std::cerr << "Error, received unsupported widgetType : " << static_cast<int32_t>(drawParams.widgetType)
+								<< " for rsrcId : " << drawParams.rsrcId << std::endl;
+	}
+	return nullptr;
+}
 

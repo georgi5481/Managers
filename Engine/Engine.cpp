@@ -53,7 +53,7 @@ int32_t Engine::init(const EngineConfig& cfg){
 			return EXIT_FAILURE;
 	}
 
-	if (EXIT_SUCCESS != _game.init(cfg.gameCfg, &_imgContainer,&_textContainer)){	//load the resources in the window
+	if (EXIT_SUCCESS != _game.init(cfg.gameCfg)){	//load the resources in the window
 			std::cerr << "_game.init() failed." << std::endl;
 			return EXIT_FAILURE;
 	}
@@ -107,23 +107,6 @@ void Engine::drawFrame(){
 	_game.draw(images);
 
 
-	SDL_Texture* texture = nullptr;
-
-	for(const DrawParams& image : images){	//will basically print out all images we contained in the map with our flyweight pattern
-
-		if(WidgetType::IMAGE == image.widgetType){
-			texture = gRsrcMgr->getImageTexture(image.rsrcId);
-		}
-		else if(WidgetType::TEXT == image.widgetType){
-			texture = gRsrcMgr->getTextTexture(image.textId);
-		}
-		else{
-			std::cerr << "Error, received unsupported widgetType : " << static_cast<int32_t>(image.widgetType)
-									<< " for rsrcId : " << image.rsrcId << std::endl;
-			continue;
-		}
-		gDrawMgr->addDrawCmd(image, texture);
-	}
 	gDrawMgr->finishFrame();
 }
 

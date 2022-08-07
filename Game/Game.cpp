@@ -6,49 +6,32 @@
 #include<cstdint>
 #include<iostream>
 //3rd-party includes
-#include "sdl_utils/config/MonitorWindowCfg.h"
+
 
 //Own components includes
+#include "sdl_utils/config/MonitorWindowCfg.h"
+
 #include "sdl_utils/InputEvent.h"
-#include "sdl_utils/containers/ImageContainer.h"
-#include "sdl_utils/containers/TextContainer.h"		//always check if you included your files corectly
 #include "utils/drawings/Color.h"
-#include "utils/drawings/DrawParams.h"
+
+#include "manager_utils/managers/RsrcMgr.h"
+#include "manager_utils/managers/DrawMgr.h"
+//#include "utils/drawings/DrawParams.h"
 
 //for demonstration
 static int32_t gFontId;
 
-int32_t Game::init([[maybe_unused]]const GameCfg& cfg,
-			const ImageContainer* imageContainerInterface,
-			TextContainer* textContainerInterface){
-
-	if(nullptr == imageContainerInterface)
-	{
-		std::cerr << "Error, nullptr provided for imgContainerInterface" << std::endl;
-		return EXIT_FAILURE;
-	}
-
-	_imgContainer = imageContainerInterface;
-
-	if(nullptr == textContainerInterface)
-	{
-		std::cerr << "Error, nullptr provided for textContainerInterface" << std::endl;
-		return EXIT_FAILURE;
-	}
-
-	_textContainer = textContainerInterface;
-
-	gFontId = cfg.textFontId;
+int32_t Game::init(const GameCfg& cfg){
 
 	layer2Img.rsrcId = cfg.layer2RsrcId;
-	Rectangle rect = _imgContainer->getImageFrame(layer2Img.rsrcId);
+	Rectangle rect = gRsrcMgr->getImageFrame(layer2Img.rsrcId);
 	layer2Img.width = rect.h;
 	layer2Img.height = rect.h;
 	layer2Img.pos = Point::ZERO;
 	layer2Img.widgetType = WidgetType::IMAGE;
 
 	pressKeysImg.rsrcId =cfg.pressKeysRsrcId;
-	rect = _imgContainer->getImageFrame(pressKeysImg.rsrcId);
+	rect = gRsrcMgr->getImageFrame(pressKeysImg.rsrcId);
 	pressKeysImg.width = rect.w;
 	pressKeysImg.height = rect.h;
 	pressKeysImg.pos = Point::ZERO;
@@ -56,13 +39,13 @@ int32_t Game::init([[maybe_unused]]const GameCfg& cfg,
 	pressKeysImg.widgetType = WidgetType::IMAGE;
 
 
-	_textContainer->createText( "Hello,  C++ dudes", Colors::GREEN, cfg.textFontId,
+	gRsrcMgr->createText( "Hello,  C++ dudes", Colors::GREEN, cfg.textFontId,
 			helloText.textId, helloText.width, helloText.height);
 	helloText.pos = Point::ZERO;
 	helloText.widgetType = WidgetType::TEXT;
 
 
-	_textContainer->createText( "Press M to hide", Colors::GREEN, cfg.textFontId,
+	gRsrcMgr->createText( "Press M to hide", Colors::GREEN, cfg.textFontId,
 			pressText.textId, pressText.width, pressText.height);
 	pressText.pos = Point::ZERO;
 	pressText.pos.x += 100;
@@ -70,21 +53,21 @@ int32_t Game::init([[maybe_unused]]const GameCfg& cfg,
 	pressText.widgetType = WidgetType::TEXT;
 
 
-	_textContainer->createText( "Press N to show", Colors::BLUE, cfg.textFontId,
+	gRsrcMgr->createText( "Press N to show", Colors::CYAN, cfg.textFontId,
 			hideText.textId, hideText.width, hideText.height);
 	hideText.pos = Point::ZERO;
-	hideText.pos.x += 500;
-	hideText.pos.y += 500;
+	hideText.pos.x += 300;
+	hideText.pos.y += 300;
 	hideText.widgetType = WidgetType::TEXT;
 
 	return EXIT_SUCCESS;
 }
 
 void Game::deinit(){
-	_textContainer->unloadText(helloText.textId);
+	gRsrcMgr->unloadText(helloText.textId);
 }
 
-void Game::draw(std::vector<DrawParams>& outImages){
+void Game::draw(){
 	outImages.push_back(pressKeysImg);
 	outImages.push_back(layer2Img);
 	outImages.push_back(helloText);
@@ -146,7 +129,7 @@ void Game::handleEvent([[maybe_unused]]const InputEvent& e){
 
 
 		case Keyboard::KEY_B:
-			_textContainer->reloadText( "Stana li ?", Colors::PURPLE, gFontId, helloText.textId, helloText.width, helloText.height);
+			gRsrcMgr->reloadText( "Stana li ?", Colors::PURPLE, gFontId, helloText.textId, helloText.width, helloText.height);
 		break;
 
 

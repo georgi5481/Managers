@@ -14,7 +14,6 @@
 
 //Forward Declaration
 struct DrawMgrCfg;
-struct SDL_Texture;
 
 class DrawMgr : public MgrBase {
 public:
@@ -34,10 +33,11 @@ public:
 
 	void clearScreen();
 	void finishFrame();
-	void addDrawCmd(const DrawParams& drawParams, SDL_Texture* texture);
+	void addDrawCmd(const DrawParams& drawParams);
 
 
 private:
+	SDL_Texture* getTextureInternal(const DrawParams& drawParams) const;
 	MonitorWindow _window;
 	Renderer _renderer;
 

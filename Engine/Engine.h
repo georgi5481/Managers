@@ -11,8 +11,6 @@
 //Own includes
 #include "Game/Game.h"
 #include "sdl_utils/InputEvent.h"
-#include "sdl_utils/containers/ImageContainer.h"
-#include "sdl_utils/containers/TextContainer.h"
 
 //Forward Declaration
 struct EngineConfig;
@@ -33,8 +31,6 @@ private:
 	void limitFPS(int64_t elapsedTimeMicroSeconds);
 
 	InputEvent _event;
-	ImageContainer _imgContainer;
-	TextContainer _textContainer;
 	Game _game;
 };
 

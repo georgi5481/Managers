@@ -19,13 +19,17 @@ struct SDL_Texture;
 class ImageContainer {
 public:
 
-	int32_t init(const ImageContainerCfg& cfg);
-	int32_t deinit();
 
 
 	SDL_Texture* getImageTexture(int32_t rsrcId) const;	//will basically search in the map below ( _textures )
 
 	Rectangle getImageFrame(int32_t rsrcId) const;		//this one will search in the other map below for the pixel frame ( _textureFrames )
+
+
+protected:	//we can't create objects if not inherited and used by the other class
+	int32_t init(const ImageContainerCfg& cfg);
+	int32_t deinit();
+
 private:
 
 	int32_t loadSingleResource(const ImageCfg& resCfg, int32_t rsrcId);

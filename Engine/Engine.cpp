@@ -9,6 +9,7 @@
 //own includes
 #include "Engine/config/EngineConfig.h"
 #include "manager_utils/managers/DrawMgr.h"
+#include "manager_utils/managers/RsrcMgr.h"
 
 #include "utils/thread/ThreadUtils.h"
 #include "utils/Time/Time.h"
@@ -31,15 +32,21 @@ int32_t Engine::init(const EngineConfig& cfg){
 			return EXIT_FAILURE;
 	}
 
-	if (EXIT_SUCCESS != _imgContainer.init(cfg.imageContainerCfg)){		//initialising the image container logic (a simple map  with int as ID and string as the path)
-			std::cerr << "imgContainer init() failed. Reason: " << std::endl;
+
+
+	gRsrcMgr = new RsrcMgr();
+
+	if(gRsrcMgr == nullptr) {
+		std::cerr << "Error, bad alloc for gRsrcMgr" << std::endl;
+			return EXIT_FAILURE;
+	}
+	if (EXIT_SUCCESS != gRsrcMgr->init(cfg.rsrcMgrCfg)){
+			std::cerr << "gRsrcMgr init() failed. Reason: " << std::endl;
 			return EXIT_FAILURE;
 	}
 
-	if (EXIT_SUCCESS != _textContainer.init(cfg.textContainerCfg)){		//initialising the image container logic (a simple map  with int as ID and string as the path)
-			std::cerr << "textContainer init() failed. Reason: " << std::endl;
-			return EXIT_FAILURE;
-	}
+
+
 
 	if (EXIT_SUCCESS != _event.init()){			//scan what event occurred
 			std::cerr << "InputEvent failed. Reason: " << std::endl;
@@ -61,9 +68,10 @@ return EXIT_SUCCESS;
 void Engine::deinit(){	//always deinitialise backwards according to initialisings
 	_game.deinit();
 	_event.deinit();
-	_imgContainer.deinit();
-	_textContainer.deinit();
 
+	gRsrcMgr->deinit();
+	delete gRsrcMgr;
+	gRsrcMgr = nullptr;
 
 	gDrawMgr->deinit();
 	delete gDrawMgr;
@@ -104,10 +112,10 @@ void Engine::drawFrame(){
 	for(const DrawParams& image : images){	//will basically print out all images we contained in the map with our flyweight pattern
 
 		if(WidgetType::IMAGE == image.widgetType){
-			texture = _imgContainer.getImageTexture(image.rsrcId);
+			texture = gRsrcMgr->getImageTexture(image.rsrcId);
 		}
 		else if(WidgetType::TEXT == image.widgetType){
-			texture = _textContainer.getTextTexture(image.textId);
+			texture = gRsrcMgr->getTextTexture(image.textId);
 		}
 		else{
 			std::cerr << "Error, received unsupported widgetType : " << static_cast<int32_t>(image.widgetType)

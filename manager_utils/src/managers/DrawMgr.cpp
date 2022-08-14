@@ -50,9 +50,16 @@ void DrawMgr::finishFrame(){
 }
 
 void DrawMgr::addDrawCmd(const DrawParams& drawParams){
-
 	SDL_Texture* texture = getTextureInternal(drawParams);
 	_renderer.renderTexture(texture,drawParams);
+}
+
+void DrawMgr::setWidgetBledMode(const DrawParams &drawParams, BlendMode blendMode){
+
+}
+
+void DrawMgr::setWidgetOpacity(const DrawParams &drawParams, int32_t opacity){
+
 }
 
 SDL_Texture* getTextureInternal(const DrawParams& drawParams) const{

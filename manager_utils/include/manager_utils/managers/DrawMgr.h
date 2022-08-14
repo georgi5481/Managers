@@ -35,6 +35,8 @@ public:
 	void finishFrame();
 	void addDrawCmd(const DrawParams& drawParams);
 
+	void setWidgetBledMode(const DrawParams &drawParams, BlendMode blendMode);
+	void setWidgetOpacity(const DrawParams &drawParams, int32_t opacity);
 
 private:
 	SDL_Texture* getTextureInternal(const DrawParams& drawParams) const;

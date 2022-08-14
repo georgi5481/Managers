@@ -5,7 +5,6 @@
 
 //C++ system includes
 #include <cstdint>
-#include <vector>
 #include <string>
 
 //3rd-party includes

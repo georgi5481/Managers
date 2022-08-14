@@ -102,9 +102,8 @@ void Engine::drawFrame(){
 
 	gDrawMgr->clearScreen();	//first clear the screen
 
-	std::vector<DrawParams> images;
 
-	_game.draw(images);
+	_game.draw();
 
 
 	gDrawMgr->finishFrame();

@@ -68,15 +68,13 @@ void Game::deinit(){
 }
 
 void Game::draw(){
-	outImages.push_back(pressKeysImg);
-	outImages.push_back(layer2Img);
-	outImages.push_back(helloText);
+	gDrawMgr->addDrawCmd(helloText);
 
 	if(isPressTextHidden) {
-		outImages.push_back(hideText);
+		gDrawMgr->addDrawCmd(hideText);
 	}
 	else{
-		outImages.push_back(pressText);
+		gDrawMgr->addDrawCmd(pressText);
 	}
 
 }

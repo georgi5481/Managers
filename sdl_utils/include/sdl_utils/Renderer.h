@@ -33,6 +33,10 @@ public:
 	void clearScreen();		//clear the old frame
 	void finishFrame();		//pointer swap so that we visualise the updated image
 	void renderTexture(SDL_Texture* texture, const DrawParams& drawParams); //for drawing GPU primitives
+
+	void setWidgetBledMode(SDL_Texture* texture, BlendMode blendMode);
+	void setWidgetOpacity(SDL_Texture* texture, int32_t opacity);
+
 private:
 
 	void drawText(const DrawParams& drawParams, SDL_Texture* texture);

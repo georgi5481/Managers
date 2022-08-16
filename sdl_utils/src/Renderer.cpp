@@ -82,6 +82,25 @@ void Renderer::renderTexture(SDL_Texture* texture, const DrawParams& drawParams)
 	}
 }
 
+
+void setWidgetBledMode(SDL_Texture* texture, BlendMode blendMode){
+
+	if(EXIT_SUCCESS != Texture::setBlendModeTexture(texture, blendMode)){
+			std::cerr << "setBlendModeTexture failed " << std::endl;
+		}
+}
+
+void setWidgetOpacity(SDL_Texture* texture, int32_t opacity){
+
+
+	if(EXIT_SUCCESS != Texture::setAlphaTexture(texture, opacity)){
+		std::cerr << "setAlphaTexture failed " << std::endl;
+
+	}
+}
+
+
+
 void Renderer::drawText(const DrawParams& drawParams, SDL_Texture* texture){
 	const SDL_Rect destRect = {.x = drawParams.pos.x, .y = drawParams.pos.y,		//destination rectangle basically sets to place the texture on the left corner with full lenght
 								.w = drawParams.width, .h = drawParams.height };

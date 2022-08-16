@@ -17,8 +17,7 @@
 
 
 struct EngineConfig{
-	DrawMgrCfg drawMgrCfg;
-	RsrcMgrCfg rsrcMgrCfg;
+
 	GameCfg gameCfg;
 };
 

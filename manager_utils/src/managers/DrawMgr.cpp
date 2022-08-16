@@ -55,14 +55,16 @@ void DrawMgr::addDrawCmd(const DrawParams& drawParams){
 }
 
 void DrawMgr::setWidgetBledMode(const DrawParams &drawParams, BlendMode blendMode){
-
+	SDL_Texture* texture = getTextureInternal(drawParams);
+	_renderer.setWidgetBledMode(texture, blendMode);
 }
 
 void DrawMgr::setWidgetOpacity(const DrawParams &drawParams, int32_t opacity){
-
+	SDL_Texture* texture = getTextureInternal(drawParams);
+	_renderer.setWidgetOpacity(texture, opacity);
 }
 
-SDL_Texture* getTextureInternal(const DrawParams& drawParams) const{
+SDL_Texture* DrawMgr::getTextureInternal(const DrawParams& drawParams) const{
 
 	if(WidgetType::IMAGE == drawParams.widgetType){
 		return gRsrcMgr->getImageTexture(drawParams.rsrcId);

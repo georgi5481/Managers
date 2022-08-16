@@ -85,6 +85,11 @@ static void populateDrawMgrConfig(DrawMgrCfg& cfg){		//for better reading when c
 }
 
 
+void populateManagerHandlerCfg(ManagerHandlerCfg& cfg){
+	populateDrawMgrConfig(cfg.drawMgrCfg);
+	populateRsrcMgrConfig(cfg.rsrcMgrCfg);
+}
+
 static void populateGameConfig(GameCfg& cfg){
 	cfg.layer2RsrcId = TextureId::LAYER_2;
 	cfg.pressKeysRsrcId = TextureId::PRESS_KEYS;
@@ -98,9 +103,8 @@ static void populateGameConfig(GameCfg& cfg){
 
 EngineConfig EngineConfigLoader::loadConfig(){
 	EngineConfig cfg;
+	populateManagerHandlerCfg(cfg.managerHandlerCfg);
 
-	populateDrawMgrConfig(cfg.drawMgrCfg);
-	populateRsrcMgrConfig(cfg.rsrcMgrCfg);
 	populateGameConfig(cfg.gameCfg);
 
 	return cfg;

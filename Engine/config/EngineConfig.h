@@ -9,15 +9,14 @@
 //3rd-party includes
 
 //Own includes
-#include "manager_utils/config/DrawMgrCfg.h"
-#include "manager_utils/config/RsrcMgrCfg.h"
+#include "manager_utils/config/ManagerHandlerCfg.h"
 #include "Game/config/GameCfg.h"
 
 //Forward Declaration
 
 
 struct EngineConfig{
-
+	ManagerHandlerCfg managerHandlerCfg;
 	GameCfg gameCfg;
 };
 

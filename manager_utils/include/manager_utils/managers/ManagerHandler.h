@@ -4,16 +4,17 @@
 //C system includes
 
 //C++ system includes
-
+#include <cstdint>
 //3rd-party includes
 
 //Own includes
 #include"manager_utils/managers/MgrBase.h"
 //Forward Declaration
+struct ManagerHandlerCfg;
 
 class ManagerHandler{
 public:
-
+int32_t init(const ManagerHandlerCfg& cfg);
 private:
 
 };

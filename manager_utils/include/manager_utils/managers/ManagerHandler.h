@@ -18,7 +18,11 @@ int32_t init(const ManagerHandlerCfg& cfg);
 void deinit();
 
 void process();
+
 private:
+
+void nullifyGlobalMgr(int32_t mgrIdx);
+
 MgrBase* _managers[MANAGERS_COUNT];	// C array of pointers
 };
 

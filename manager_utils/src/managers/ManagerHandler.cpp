@@ -3,7 +3,7 @@
 
 //C system includes
 #include <cstdint>
-
+#include<iostream>
 //C++ system includes
 
 //3rd-party includes
@@ -56,9 +56,27 @@ void ManagerHandler::deinit(){
 	gDrawMgr->deinit();
 	delete gDrawMgr;
 	gDrawMgr = nullptr;
+
+	for(int32_t i = MANAGERS_COUNT -1; i >= 0 ; i--){		//we have to deinitialise backwards
+		_managers[i]->deinit();
+	}
 }
 
-void process(){
+void ManagerHandler::process(){
+	for(int32_t i = 0; i < MANAGERS_COUNT; ++i){		//caling the proces vitual function
+		_managers[i]->process();						//that will override with the correct process method
+	}
 
+}
 
+void ManagerHandler::nullifyGlobalMgr(int32_t mgrIdx){
+	switch(mgrIdx){
+	case DRAW_MGR_IDX:
+		break;
+	case RSRC_MGR_IDX:
+		break;
+	default:
+		std::cerr << "Received invalid mgrIdx: " << mgrIdx << std::endl;
+		break;
+	}
 }

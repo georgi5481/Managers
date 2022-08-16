@@ -8,8 +8,7 @@
 
 //own includes
 #include "Engine/config/EngineConfig.h"
-#include "manager_utils/managers/DrawMgr.h"
-#include "manager_utils/managers/RsrcMgr.h"
+
 
 #include "utils/thread/ThreadUtils.h"
 #include "utils/Time/Time.h"
@@ -21,29 +20,6 @@
 
 int32_t Engine::init(const EngineConfig& cfg){
 
-	gDrawMgr = new DrawMgr();
-
-	if(gDrawMgr == nullptr) {
-		std::cerr << "Error, bad alloc for DrawMgr" << std::endl;
-			return EXIT_FAILURE;
-	}
-	if (EXIT_SUCCESS != gDrawMgr->init(cfg.drawMgrCfg)){
-			std::cerr << "gDrawMgr init() failed. Reason: " << std::endl;
-			return EXIT_FAILURE;
-	}
-
-
-
-	gRsrcMgr = new RsrcMgr();
-
-	if(gRsrcMgr == nullptr) {
-		std::cerr << "Error, bad alloc for gRsrcMgr" << std::endl;
-			return EXIT_FAILURE;
-	}
-	if (EXIT_SUCCESS != gRsrcMgr->init(cfg.rsrcMgrCfg)){
-			std::cerr << "gRsrcMgr init() failed. Reason: " << std::endl;
-			return EXIT_FAILURE;
-	}
 
 
 
@@ -69,13 +45,7 @@ void Engine::deinit(){	//always deinitialise backwards according to initialising
 	_game.deinit();
 	_event.deinit();
 
-	gRsrcMgr->deinit();
-	delete gRsrcMgr;
-	gRsrcMgr = nullptr;
 
-	gDrawMgr->deinit();
-	delete gDrawMgr;
-	gDrawMgr = nullptr;
 }
 
 void Engine::start(){

@@ -15,8 +15,11 @@ struct ManagerHandlerCfg;
 class ManagerHandler{
 public:
 int32_t init(const ManagerHandlerCfg& cfg);
-private:
+void deinit();
 
+void process();
+private:
+MgrBase* _managers[MANAGERS_COUNT];	// C array of pointers
 };
 
 #endif /* MANAGER_UTILS_INCLUDE_MANAGER_UTILS_MANAGERS_MANAGERHANDLER_H_ */

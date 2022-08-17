@@ -20,12 +20,15 @@
 
 int32_t Engine::init(const EngineConfig& cfg){
 
-
+	if (EXIT_SUCCESS != _managerHandler.init(cfg.managerHandlerCfg)){			//scan what event occurred
+			std::cerr << "ManagerHandler.init() failed." << std::endl;
+			return EXIT_FAILURE;
+	}
 
 
 
 	if (EXIT_SUCCESS != _event.init()){			//scan what event occurred
-			std::cerr << "InputEvent failed. Reason: " << std::endl;
+			std::cerr << "InputEvent.init() failed." << std::endl;
 			return EXIT_FAILURE;
 	}
 
@@ -70,13 +73,13 @@ while(true){
 
 void Engine::drawFrame(){
 
-	gDrawMgr->clearScreen();	//first clear the screen
+	//gDrawMgr->clearScreen();	//first clear the screen
 
 
 	_game.draw();
 
 
-	gDrawMgr->finishFrame();
+	//gDrawMgr->finishFrame();
 }
 
 

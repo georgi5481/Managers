@@ -11,6 +11,7 @@
 //Own includes
 #include "Game/Game.h"
 #include "sdl_utils/InputEvent.h"
+#include "manager_utils/managers/ManagerHandler.h"
 
 //Forward Declaration
 struct EngineConfig;
@@ -30,6 +31,7 @@ private:
 
 	void limitFPS(int64_t elapsedTimeMicroSeconds);
 
+	ManagerHandler _managerHandler;
 	InputEvent _event;
 	Game _game;
 };

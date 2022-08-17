@@ -20,7 +20,7 @@
 struct ManagerHandlerCfg{
 	DrawMgrCfg drawMgrCfg;
 	RsrcMgrCfg rsrcMgrCfg;
-}
+};
 
 
 #endif /* MANAGER_UTILS_INCLUDE_MANAGER_UTILS_CONFIG_MANAGERHANDLERCFG_H_ */

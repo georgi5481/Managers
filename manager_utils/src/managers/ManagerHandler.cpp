@@ -59,6 +59,7 @@ void ManagerHandler::deinit(){
 
 	for(int32_t i = MANAGERS_COUNT -1; i >= 0 ; i--){		//we have to deinitialise backwards
 		_managers[i]->deinit();
+		_managers[i] = nullptr;
 	}
 }
 
@@ -72,8 +73,12 @@ void ManagerHandler::process(){
 void ManagerHandler::nullifyGlobalMgr(int32_t mgrIdx){
 	switch(mgrIdx){
 	case DRAW_MGR_IDX:
+		delete gDrawMgr;
+		gDrawMgr = nullptr;
 		break;
 	case RSRC_MGR_IDX:
+		delete gRsrcMgr;
+		gRsrcMgr = nullptr;
 		break;
 	default:
 		std::cerr << "Received invalid mgrIdx: " << mgrIdx << std::endl;

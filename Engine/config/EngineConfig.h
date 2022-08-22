@@ -14,7 +14,6 @@
 
 //Forward Declaration
 
-
 struct EngineConfig{
 	ManagerHandlerCfg managerHandlerCfg;
 	GameCfg gameCfg;

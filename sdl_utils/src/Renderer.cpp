@@ -8,7 +8,7 @@
 
 //3rd-party includes
 #include <SDL_render.h>
-#include<SDL_hints.h>
+#include <SDL_hints.h>
 
 //Own includes
 #include"sdl_utils/Texture.h"
@@ -83,14 +83,14 @@ void Renderer::renderTexture(SDL_Texture* texture, const DrawParams& drawParams)
 }
 
 
-void setWidgetBledMode(SDL_Texture* texture, BlendMode blendMode){
-
+void Renderer::setWidgetBledMode(SDL_Texture* texture, BlendMode blendMode){
+	//temporary enable alpha blending for all existing textures
 	if(EXIT_SUCCESS != Texture::setBlendModeTexture(texture, blendMode)){
 			std::cerr << "setBlendModeTexture failed " << std::endl;
 		}
 }
 
-void setWidgetOpacity(SDL_Texture* texture, int32_t opacity){
+void Renderer::setWidgetOpacity(SDL_Texture* texture, int32_t opacity){
 
 
 	if(EXIT_SUCCESS != Texture::setAlphaTexture(texture, opacity)){

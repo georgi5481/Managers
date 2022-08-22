@@ -47,6 +47,6 @@ private:
 	uint32_t _maxFrames{0};
 };
 
-extern DrawMgr *gDrawMgr;	//declared in the corresponding .cpp file, but set/initialised somewhere NOT int the corresponding .cpp file
+extern DrawMgr *gDrawMgr;	//declared in the corresponding .cpp file, but set/initialised somewhere else in other .cpp file
 
 #endif /* MANAGER_UTILS_INCLUDE_MANAGER_UTILS_MANAGERS_DRAWMGR_H_ */

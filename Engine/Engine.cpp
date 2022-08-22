@@ -8,6 +8,7 @@
 
 //own includes
 #include "Engine/config/EngineConfig.h"
+#include "manager_utils/managers/DrawMgr.h"
 
 
 #include "utils/thread/ThreadUtils.h"
@@ -24,7 +25,6 @@ int32_t Engine::init(const EngineConfig& cfg){
 			std::cerr << "ManagerHandler.init() failed." << std::endl;
 			return EXIT_FAILURE;
 	}
-
 
 
 	if (EXIT_SUCCESS != _event.init()){			//scan what event occurred

@@ -19,7 +19,7 @@ class Renderer {
 	//forbid the copy/move constructors and assignment operators
 public:
 	Renderer() = default;
-//	 ~Renderer();
+//	~Renderer();
 
 	Renderer(const Renderer& other) = delete;//forbid copy/assignment constructor
 	Renderer(Renderer&& other) = delete;//forbid the move constructor

@@ -9,6 +9,7 @@
 
 //Own includes
 #include"manager_utils/managers/MgrBase.h"
+
 //Forward Declaration
 struct ManagerHandlerCfg;
 

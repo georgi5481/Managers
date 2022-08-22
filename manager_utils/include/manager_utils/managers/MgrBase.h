@@ -23,13 +23,12 @@ public:
 	MgrBase() = default;	//we have to se the base class constructor as well to be default if we want to use the default in the inherited
 	virtual ~MgrBase() = default;	//making the destructor virtual will make automatically all other members virtuals
 
-	MgrBase(const MgrBase& other) = delete;	//copy constructor
-	MgrBase(MgrBase&& other) = delete;		//move constructor
-	//forbid the copy and move constructors
-	//forbid the copy and move assignment operators
+	MgrBase(const MgrBase& other) = delete;		//forbid the copy constructor
+	MgrBase(MgrBase&& other) = delete;			//forbid the copy and move assignment operators
 
 	MgrBase& operator=(const MgrBase& other) = delete;	//copy-assignment operator
 	MgrBase& operator=(MgrBase&& other) = delete;	//move-assignment operator
+
 	virtual void deinit() = 0;
 	virtual void process() = 0;
 };

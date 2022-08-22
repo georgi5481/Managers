@@ -73,13 +73,13 @@ while(true){
 
 void Engine::drawFrame(){
 
-	//gDrawMgr->clearScreen();	//first clear the screen
+	gDrawMgr->clearScreen();	//first clear the screen
 
 
 	_game.draw();
 
 
-	//gDrawMgr->finishFrame();
+	gDrawMgr->finishFrame();
 }
 
 

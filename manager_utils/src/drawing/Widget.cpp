@@ -8,6 +8,7 @@
 
 //Own includes
 #include "manager_utils/managers/DrawMgr.h"
+
 void Widget::draw() {
 	if(_isVisible){
 		gDrawMgr-> addDrawCmd(_drawParams);
@@ -29,7 +30,13 @@ void Widget::setPosition(int32_t x, int32_t y) {
 	_drawParams.pos.y = y;
 }
 void Widget::setOpacity(int32_t opacity) {
+	if(_isAlphaModulationEnabled){
+		std::cerr <<  "Alpha modulation was not enabled for rsrcId: "
+				<< _drawParams.rsrcId << "will not change opacity" S<< std::endl;
+	return;
+	}
 	_drawParams.opacity = opacity;
+	gDrawMgr->setWidgetOpacity(_drawParams, opacity);
 }
 
 
@@ -43,12 +50,18 @@ Point Widget::getPosition() const{
 void Widget::activateAlphaModulation() {
 
 	if(_isAlphaModulationEnabled){
-		std::cerr <<  "Alpha modulation was already anabled for rsrcId: " << _drawParams.rsrcId << std::endl;
+		std::cerr <<  "Alpha modulation was already enabled for rsrcId: " << _drawParams.rsrcId << std::endl;
 	return;
 	}
-gDrawMgr->setWidgetBledMode(_drawParams, BlendMode::BLEND);
+	_isAlphaModulationEnabled = true;
+	gDrawMgr->setWidgetBledMode(_drawParams, BlendMode::BLEND);
 }
 void Widget::deactivateAlphaModulation() {
+	if(!_isAlphaModulationEnabled){
+		std::cerr <<  "Alpha modulation was already not enabled for rsrcId: " << _drawParams.rsrcId << std::endl;
+	return;
+	}
+	_isAlphaModulationEnabled = false;
 gDrawMgr->setWidgetBledMode(_drawParams, BlendMode::NONE);
 }
 

@@ -1,5 +1,5 @@
 //Coresponding Header
-
+#include "manager_utils/drawing/Widget.h"
 //C system includes
 
 //C++ system includes
@@ -8,3 +8,11 @@
 
 //Own includes
 
+Widget::Widget(){
+
+}
+
+
+Widget::~Widget(){
+
+}

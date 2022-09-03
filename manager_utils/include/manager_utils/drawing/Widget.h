@@ -29,7 +29,7 @@ public:
 	void activateAlphaModulation();
 	void deactivateAlphaModulation();
 
-	void shot();
+	void show();
 	void hide();
 
 	void moveRight(int32_t delta);

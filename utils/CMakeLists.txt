@@ -16,6 +16,8 @@ add_library(
 	${_INC_DIR}/thread/ThreadUtils.h
 	${_INC_DIR}/Time/Time.h
 	
+	
+	${_SRC_DIR}/drawings/DrawParams.cpp
 	${_SRC_DIR}/drawings/Point.cpp
 	${_SRC_DIR}/drawings/Color.cpp
 	${_SRC_DIR}/drawings/Rectangle.cpp

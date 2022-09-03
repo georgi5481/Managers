@@ -3,7 +3,7 @@
 //C system includes
 
 //C++ system includes
-
+#include <iostream>
 //3rd-party includes
 
 //Own includes
@@ -18,6 +18,8 @@ void Widget::reset() {	//returning the boolean values into their original state
 	 _isCreated = false;
 	 _isVisible = true;
 	 _isAlphaModulationEnabled = false;
+
+	 _drawParams.reset();
 }
 void Widget::setPosition(const Point& pos) {
 	_drawParams.pos = pos;
@@ -40,9 +42,14 @@ Point Widget::getPosition() const{
 
 void Widget::activateAlphaModulation() {
 
+	if(_isAlphaModulationEnabled){
+		std::cerr <<  "Alpha modulation was already anabled for rsrcId: " << _drawParams.rsrcId << std::endl;
+	return;
+	}
+gDrawMgr->setWidgetBledMode(_drawParams, BlendMode::BLEND);
 }
 void Widget::deactivateAlphaModulation() {
-
+gDrawMgr->setWidgetBledMode(_drawParams, BlendMode::NONE);
 }
 
 void Widget::show() {

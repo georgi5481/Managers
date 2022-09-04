@@ -56,10 +56,11 @@ void Game::deinit(){
 }
 
 void Game::draw(){
+	pressKeysImg.draw();
 	gDrawMgr->addDrawCmd(helloText);
 
 	if(isPressTextHidden) {
-		gDrawMgr->addDrawCmd(pressKeysImg);
+
 		gDrawMgr->addDrawCmd(hideText);
 	}
 	else{

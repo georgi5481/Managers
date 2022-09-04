@@ -17,6 +17,7 @@ void Widget::draw() {
 //setter & getters
 void Widget::reset() {	//returning the boolean values into their original state
 	 _isCreated = false;
+	 _isDestroyed = true;
 	 _isVisible = true;
 	 _isAlphaModulationEnabled = false;
 

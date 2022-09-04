@@ -23,20 +23,8 @@ static int32_t gFontId;
 
 int32_t Game::init(const GameCfg& cfg){
 
-	layer2Img.rsrcId = cfg.layer2RsrcId;
-	Rectangle rect = gRsrcMgr->getImageFrame(layer2Img.rsrcId);
-	layer2Img.width = rect.h;
-	layer2Img.height = rect.h;
-	layer2Img.pos = Point::ZERO;
-	layer2Img.widgetType = WidgetType::IMAGE;
-
-	pressKeysImg.rsrcId =cfg.pressKeysRsrcId;
-	rect = gRsrcMgr->getImageFrame(pressKeysImg.rsrcId);
-	pressKeysImg.width = rect.w;
-	pressKeysImg.height = rect.h;
-	pressKeysImg.pos = Point::ZERO;
-	pressKeysImg.pos.y += 20;
-	pressKeysImg.widgetType = WidgetType::IMAGE;
+	layer2Img.create(cfg.layer2RsrcId);
+	pressKeysImg.create(cfg.pressKeysRsrcId);
 
 
 	gRsrcMgr->createText( "Hello,  C++ dudes", Colors::GREEN, cfg.textFontId,

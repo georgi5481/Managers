@@ -11,7 +11,7 @@
 
 //Own includes
 #include "Game/config/GameCfg.h"
-#include "utils/drawings/DrawParams.h"
+#include "manager_utils/drawing/Image.h"
 
 //Forward Declaration
 struct InputEvent;
@@ -25,8 +25,8 @@ public:
 	void handleEvent(const InputEvent& e);
 
 private:
-	DrawParams pressKeysImg;
-	DrawParams layer2Img;
+	Image pressKeysImg;
+	Image layer2Img;
 	DrawParams helloText;
 
 	DrawParams pressText;

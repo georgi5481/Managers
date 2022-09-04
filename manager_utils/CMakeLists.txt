@@ -17,8 +17,13 @@ add_library(
 	${_INC_DIR}/managers/RsrcMgr.h	
 	${_INC_DIR}/managers/DrawMgr.h	
 	${_INC_DIR}/managers/ManagerHandler.h	
-	
-	
+	${_INC_DIR}/drawing/Widget.h	
+	${_INC_DIR}/drawing/Image.h	
+	${_INC_DIR}/drawing/Text.h	
+		
+	${_SRC_DIR}/drawing/Text.cpp
+	${_SRC_DIR}/drawing/Widget.cpp
+	${_SRC_DIR}/drawing/Image.cpp
 	${_SRC_DIR}/managers/DrawMgr.cpp
 	${_SRC_DIR}/managers/RsrcMgr.cpp
 	${_SRC_DIR}/managers/ManagerHandler.cpp	

@@ -11,11 +11,11 @@
 #include "manager_utils/drawing/Widget.h"
 //Forward Declaration
 
-class Image{
+class Image : public Widget{
 public:
 	~Image();
 
-	void create(int32_t rsrcId, const Point& pos = Point::ZERO);
+	void create(int32_t rsrcId, const Point& pos = Point::ZERO);	//we can set the default parameter only in the header file
 	void destroy();
 };
 

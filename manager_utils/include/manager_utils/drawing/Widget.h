@@ -43,6 +43,7 @@ protected:
 	DrawParams _drawParams;
 
 	bool _isCreated = false;
+	bool _isDestroyed = true;
 	bool _isVisible = true;
 	bool _isAlphaModulationEnabled = false;
 

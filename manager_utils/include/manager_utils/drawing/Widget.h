@@ -19,6 +19,13 @@ public:
 	void draw();
 	//setter & getters
 	void reset();
+
+	void setWidth(int32_t width);
+	void setHeight(int32_t height);
+
+	int32_t getWidth() const;
+	int32_t getHeight() const;
+
 	void setPosition(const Point& pos);
 	void setPosition(int32_t x, int32_t y);
 	void setOpacity(int32_t opacity);

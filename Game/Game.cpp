@@ -25,7 +25,7 @@ int32_t Game::init(const GameCfg& cfg){
 
 	layer2Img.create(cfg.layer2RsrcId);
 	pressKeysImg.create(cfg.pressKeysRsrcId);
-
+	pressKeysImg.activateAlphaModulation();
 
 	gRsrcMgr->createText( "Hello,  C++ dudes", Colors::GREEN, cfg.textFontId,
 			helloText.textId, helloText.width, helloText.height);
@@ -59,6 +59,7 @@ void Game::draw(){
 	gDrawMgr->addDrawCmd(helloText);
 
 	if(isPressTextHidden) {
+		gDrawMgr->addDrawCmd(pressKeysImg);
 		gDrawMgr->addDrawCmd(hideText);
 	}
 	else{
@@ -73,44 +74,44 @@ void Game::handleEvent([[maybe_unused]]const InputEvent& e){
 	}
 
 		switch(e.key){
-		//MOVEMENT
+		//MOVEMENT with arrow keys
 		case Keyboard::KEY_UP:
-		pressKeysImg.pos.y -= 10;
+			pressKeysImg.moveUp(10);
 		break;
 
 		case Keyboard::KEY_DOWN:
-		pressKeysImg.pos.y += 10;
+			pressKeysImg.moveDown(10);
 		break;
 
 		case Keyboard::KEY_LEFT:
-		pressKeysImg.pos.x -= 10;
+		pressKeysImg.moveLeft(10);
 		break;
 
 		case Keyboard::KEY_RIGHT:
-		pressKeysImg.pos.x += 10;
+			pressKeysImg.moveRight(10);
 		break;
 
 
 		//STRETCHING
 		case Keyboard::KEY_A:
-		pressKeysImg.width -= 10;
+			pressKeysImg.setWidth(pressKeysImg.getWidth() - 10);
 		break;
 		case Keyboard::KEY_D:
-		pressKeysImg.width += 10;
+			pressKeysImg.setWidth(pressKeysImg.getWidth() + 10);
 		break;
 		case Keyboard::KEY_S:
-		pressKeysImg.height -= 10;
+			pressKeysImg.setHeight(pressKeysImg.getHeight() - 10);
 		break;
 		case Keyboard::KEY_W:
-		pressKeysImg.height += 10;
+			pressKeysImg.setHeight(pressKeysImg.getHeight() + 10);
 		break;
 
 		//OPACITY
 		case Keyboard::KEY_E:
-		pressKeysImg.opacity -= 10;
+			pressKeysImg.setOpacity(pressKeysImg.getOpacity() - 10);
 		break;
 		case Keyboard::KEY_Q:
-		pressKeysImg.opacity += 10;
+			pressKeysImg.setOpacity(pressKeysImg.getOpacity() + 10);
 		break;
 
 

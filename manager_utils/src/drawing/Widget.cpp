@@ -23,6 +23,22 @@ void Widget::reset() {	//returning the boolean values into their original state
 
 	 _drawParams.reset();
 }
+
+void Widget::setWidth(int32_t width){
+	_drawParams.width = width;
+}
+
+void Widget::setHeight(int32_t height){
+	_drawParams.height = height;
+}
+
+int32_t Widget::getWidth() const{
+	return _drawParams.width;
+}
+int32_t Widget::getHeight() const{
+	return _drawParams.height;
+}
+
 void Widget::setPosition(const Point& pos) {
 	_drawParams.pos = pos;
 }
@@ -33,7 +49,7 @@ void Widget::setPosition(int32_t x, int32_t y) {
 void Widget::setOpacity(int32_t opacity) {
 	if(_isAlphaModulationEnabled){
 		std::cerr <<  "Alpha modulation was not enabled for rsrcId: "
-				<< _drawParams.rsrcId << "will not change opacity" S<< std::endl;
+				<< _drawParams.rsrcId << "will not change opacity" << std::endl;
 	return;
 	}
 	_drawParams.opacity = opacity;

@@ -1,5 +1,5 @@
 //Coresponding Header
-#include "utils/drawings/Image.h"
+#include "manager_utils/drawing/Image.h"
 
 //C system includes
 
@@ -21,7 +21,8 @@ void Image::create(int32_t rsrcId, const Point& pos){	//parsing default paramete
 		std::cerr << "Error, image with rsrcId: " << rsrcId
 				<< " was already created. Will not create twice. " << std::endl;
 	}
-	Rectangle rect = gRsrcMgr->getImageFrame(rsrcId);
+	const Rectangle rect = gRsrcMgr->getImageFrame(rsrcId);
+	_drawParams.rsrcId = rsrcId;
 	_drawParams.width = rect.w;
 	_drawParams.height = rect.h;
 	_drawParams.pos = pos;

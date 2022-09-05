@@ -27,10 +27,10 @@ int32_t Game::init(const GameCfg& cfg){
 	pressKeysImg.create(cfg.pressKeysRsrcId);
 	pressKeysImg.activateAlphaModulation();
 
-	gRsrcMgr->createText( "Hello,  C++ dudes", Colors::GREEN, cfg.textFontId,
-			helloText.textId, helloText.width, helloText.height);
-	helloText.pos = Point::ZERO;
-	helloText.widgetType = WidgetType::TEXT;
+//	gRsrcMgr->createText( "Hello,  C++ dudes", Colors::GREEN, cfg.textFontId,
+//	helloText.textId, helloText.width, helloText.height);
+//	helloText.pos = Point::ZERO;
+//	helloText.widgetType = WidgetType::TEXT;
 
 
 	gRsrcMgr->createText( "Press M to hide", Colors::GREEN, cfg.textFontId,

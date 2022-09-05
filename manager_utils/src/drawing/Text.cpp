@@ -10,10 +10,25 @@
 
 //Own includes
 
-Text::Text(){
+Text::~Text(){
+	if(_isCreated && !_isDestroyed){
+		destroy();
+	}
+}
+
+void Text::create(int32_t rsrcId, const Point& pos = Point::ZERO){
+
+}
+void Text::destroy(){
 
 }
 
-Text::~Text(){
+void Text::setText(const std::string& text){
 
+}
+void Text::setColor(const Color& color){
+
+}
+std::string Text::getTextContent() const{
+	return _textContent;
 }

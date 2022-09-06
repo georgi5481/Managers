@@ -26,7 +26,7 @@ void Text::create(const std::string& text, int32_t fontId, const Color& color,
 					<< " was already created. Will not create twice. " << std::endl;
 		}
 
-	gRsrcMgr->createText(text, color, 	_fontId, _drawParams.rsrcId, _drawParams.width,
+	gRsrcMgr->createText(text, color, 	fontId, _drawParams.rsrcId, _drawParams.width,
 								_drawParams.height);
 
 	 _textContent= text;	//setting the information in case we need it later on

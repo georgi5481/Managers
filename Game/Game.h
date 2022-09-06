@@ -28,8 +28,8 @@ public:
 private:
 	Image pressKeysImg;
 	Image layer2Img;
-	Text helloText;
 
+	Text helloText;
 	Text pressText;
 	Text hideText;
 

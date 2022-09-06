@@ -16,10 +16,9 @@ class Text : public Widget{	//inheriting Widget cuz we are gonna need the setter
 public:
 	~Text();
 
-	void create(const std::string& text, int32_t forntId, const Color& color,
-								int32_t rsrcId, const Point& pos = Point::ZERO);
+	void create(const std::string& text, int32_t fontId, const Color& color,
+					const Point& pos = Point::ZERO);
 	void destroy();
-
 	void setText(const std::string& text);
 	void setColor(const Color& color);
 	std::string getTextContent() const;

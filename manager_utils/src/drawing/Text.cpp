@@ -19,19 +19,19 @@ Text::~Text(){
 	}
 }
 
-void Text::create(const std::string& text, int32_t forntId, const Color& color,
-									int32_t rsrcId, const Point& pos){
+void Text::create(const std::string& text, int32_t fontId, const Color& color,
+									 const Point& pos){
 	if(_isCreated){
-			std::cerr << "Error, text with rsrcId: " << rsrcId
+			std::cerr << "Error, text with rsrcId: " << _drawParams.rsrcId
 					<< " was already created. Will not create twice. " << std::endl;
 		}
 
-	gRsrcMgr->createText( text, color, rsrcId,
-	_drawParams.textId, _drawParams.width, _drawParams.height);
+	gRsrcMgr->createText(text, color, 	_fontId, _drawParams.rsrcId, _drawParams.width,
+								_drawParams.height);
 
 	 _textContent= text;	//setting the information in case we need it later on
 	 _color = color;
-	 _fontId = rsrcId;
+	 _fontId = fontId;
 
 	_drawParams.pos = pos;
 	_drawParams.widgetType = WidgetType::TEXT;
@@ -58,8 +58,8 @@ void Text::setText(const std::string& text){
 	}
 
 	_textContent = text;
-	gRsrcMgr->reloadText( text, _color, _fontId,
-			_drawParams.textId, _drawParams.width, _drawParams.height);
+	gRsrcMgr->reloadText(text, _color, _fontId,
+			_drawParams.rsrcId, _drawParams.width, _drawParams.height);
 
 }
 void Text::setColor(const Color& color){

@@ -9,7 +9,7 @@
 
 
 //Own components includes
-#include "sdl_utils/config/MonitorWindowCfg.h"
+//#include "sdl_utils/config/MonitorWindowCfg.h"
 #include "sdl_utils/InputEvent.h"
 
 int32_t Game::init(const GameCfg& cfg){
@@ -18,46 +18,28 @@ int32_t Game::init(const GameCfg& cfg){
 	pressKeysImg.create(cfg.pressKeysRsrcId);
 	pressKeysImg.activateAlphaModulation();
 
-//	gRsrcMgr->createText( "Hello,  C++ dudes", Colors::GREEN, cfg.textFontId,
-//	helloText.textId, helloText.width, helloText.height);
-//	helloText.pos = Point::ZERO;
-//	helloText.widgetType = WidgetType::TEXT;
-
-
 	helloText.create("Hello,  C++ dudes",cfg.textFontId, Colors::GREEN);
-
-	gRsrcMgr->createText( "Press M to hide", Colors::GREEN, cfg.textFontId,
-			pressText.textId, pressText.width, pressText.height);
-	pressText.pos = Point::ZERO;
-	pressText.pos.x += 100;
-	pressText.pos.y += 100;
-	pressText.widgetType = WidgetType::TEXT;
-
-
-	gRsrcMgr->createText( "Press N to show", Colors::CYAN, cfg.textFontId,
-			hideText.textId, hideText.width, hideText.height);
-	hideText.pos = Point::ZERO;
-	hideText.pos.x += 300;
-	hideText.pos.y += 300;
-	hideText.widgetType = WidgetType::TEXT;
+	pressText.create("Press M to hide.",cfg.textFontId, Colors::GREEN);
+	hideText.create("Press N to show.",cfg.textFontId, Colors::PURPLE,
+				Point(200,200));
 
 	return EXIT_SUCCESS;
 }
 
 void Game::deinit(){
-	gRsrcMgr->unloadText(helloText.textId);
+
 }
 
 void Game::draw(){
 	pressKeysImg.draw();
-	gDrawMgr->addDrawCmd(helloText);
+	helloText.draw();
 
 	if(isPressTextHidden) {
 
-		gDrawMgr->addDrawCmd(hideText);
+		hideText.draw();
 	}
 	else{
-		gDrawMgr->addDrawCmd(pressText);
+		pressText.draw();
 	}
 
 }
@@ -110,7 +92,7 @@ void Game::handleEvent([[maybe_unused]]const InputEvent& e){
 
 
 		case Keyboard::KEY_B:
-			gRsrcMgr->reloadText( "Stana li ?", Colors::PURPLE, gFontId, helloText.textId, helloText.width, helloText.height);
+	//		gRsrcMgr->reloadText( "Stana li ?", Colors::PURPLE, gFontId, helloText.textId, helloText.width, helloText.height);
 		break;
 
 

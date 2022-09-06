@@ -41,6 +41,6 @@ bool Color::operator==(const Color& other) const{
 			(rgba.g == other.rgba.g) && (rgba.a == other.rgba.a);
 }
 bool Color::operator!=(const Color& other) const{
-	return Color::operator==(other);
+	return !Color::operator==(other);
 }
 

@@ -10,14 +10,7 @@
 
 //Own components includes
 #include "sdl_utils/config/MonitorWindowCfg.h"
-
 #include "sdl_utils/InputEvent.h"
-#include "utils/drawings/Color.h"
-
-#include "manager_utils/managers/RsrcMgr.h"
-#include "manager_utils/managers/DrawMgr.h"
-//#include "utils/drawings/DrawParams.h"
-
 
 int32_t Game::init(const GameCfg& cfg){
 
@@ -30,6 +23,8 @@ int32_t Game::init(const GameCfg& cfg){
 //	helloText.pos = Point::ZERO;
 //	helloText.widgetType = WidgetType::TEXT;
 
+
+	helloText.create("Hello,  C++ dudes",cfg.textFontId, Colors::GREEN);
 
 	gRsrcMgr->createText( "Press M to hide", Colors::GREEN, cfg.textFontId,
 			pressText.textId, pressText.width, pressText.height);

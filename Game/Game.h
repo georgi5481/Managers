@@ -12,6 +12,7 @@
 //Own includes
 #include "Game/config/GameCfg.h"
 #include "manager_utils/drawing/Image.h"
+#include "manager_utils/drawing/Text.h"
 
 //Forward Declaration
 struct InputEvent;
@@ -27,10 +28,10 @@ public:
 private:
 	Image pressKeysImg;
 	Image layer2Img;
-	DrawParams helloText;
+	Text helloText;
 
-	DrawParams pressText;
-	DrawParams hideText;
+	Text pressText;
+	Text hideText;
 
 
 	bool isPressTextHidden = false;

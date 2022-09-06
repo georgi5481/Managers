@@ -29,7 +29,7 @@ void Text::create(const std::string& text, int32_t forntId, const Color& color,
 	gRsrcMgr->createText( text, color, rsrcId,
 	_drawParams.textId, _drawParams.width, _drawParams.height);
 
-	 _textContent= text;
+	 _textContent= text;	//setting the information in case we need it later on
 	 _color = color;
 	 _fontId = rsrcId;
 
@@ -47,22 +47,32 @@ void Text::destroy(){
 		return;
 	}
 
-	gRsrcMgr->createText( "Hello,  C++ dudes", Colors::GREEN, cfg.textFontId,
-	helloText.textId, helloText.width, helloText.height);
-	helloText.pos = Point::ZERO;
-	helloText.widgetType = WidgetType::TEXT;
-
 	_isCreated = false;
 	_isDestroyed = false;
 	Widget::reset();
 }
 
 void Text::setText(const std::string& text){
+	if(text == _textContent){
+		return;
+	}
+
+	_textContent = text;
+	gRsrcMgr->reloadText( text, _color, _fontId,
+			_drawParams.textId, _drawParams.width, _drawParams.height);
 
 }
 void Text::setColor(const Color& color){
+	if(color == _color){
+		return;
+	}
+
+	_color = color;
+	gRsrcMgr->reloadText( _textContent, _color, _fontId,
+			_drawParams.textId, _drawParams.width, _drawParams.height);
 
 }
+
 std::string Text::getTextContent() const{
 	return _textContent;
 }

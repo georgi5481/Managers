@@ -20,7 +20,7 @@ enum{
 class MgrBase {
 public:
 
-	MgrBase() = default;	//we have to se the base class constructor as well to be default if we want to use the default in the inherited
+	MgrBase() = default;	//we have to set the base class constructor as well to be default if we want to use the default in the inherited
 	virtual ~MgrBase() = default;	//making the destructor virtual will make automatically all other members virtuals
 
 	MgrBase(const MgrBase& other) = delete;		//forbid the copy constructor

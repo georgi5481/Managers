@@ -18,8 +18,6 @@
 #include "manager_utils/managers/DrawMgr.h"
 //#include "utils/drawings/DrawParams.h"
 
-//for demonstration
-static int32_t gFontId;
 
 int32_t Game::init(const GameCfg& cfg){
 

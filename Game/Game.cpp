@@ -87,6 +87,8 @@ void Game::handleEvent([[maybe_unused]]const InputEvent& e){
 
 		case Keyboard::KEY_B:
 	//		gRsrcMgr->reloadText( "Stana li ?", Colors::PURPLE, gFontId, helloText.textId, helloText.width, helloText.height);
+		helloText.setText("Kak ste kolegi");
+
 		break;
 
 

@@ -26,12 +26,8 @@ public:
 	void handleEvent(const InputEvent& e);
 
 private:
-	Image pressKeysImg;
-	Image layer2Img;
-
-	Text helloText;
-	Text pressText;
-	Text hideText;
+	void setMousePosText(const Point& mousePos);
+	Text _mousePosText;
 };
 
 #endif /* GAME_GAME_H_ */

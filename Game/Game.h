@@ -32,10 +32,6 @@ private:
 	Text helloText;
 	Text pressText;
 	Text hideText;
-
-
-	bool isPressTextHidden = false;
-
 };
 
 #endif /* GAME_GAME_H_ */

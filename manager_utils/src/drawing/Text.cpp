@@ -70,7 +70,6 @@ void Text::setColor(const Color& color){
 	_color = color;
 	gRsrcMgr->reloadText( _textContent, _color, _fontId,
 			_drawParams.textId, _drawParams.width, _drawParams.height);
-
 }
 
 std::string Text::getTextContent() const{

@@ -19,9 +19,9 @@ int32_t Game::init(const GameCfg& cfg){
 	pressKeysImg.activateAlphaModulation();
 
 	helloText.create("Hello,  C++ dudes",cfg.textFontId, Colors::GREEN);
-	pressText.create("Press M to hide.",cfg.textFontId, Colors::GREEN);
+	pressText.create("Press M to hide.",cfg.textFontId, Colors::GREEN, Point(200,200));
 	hideText.create("Press N to show.",cfg.textFontId, Colors::PURPLE,
-				Point(200,200));
+				Point(500,200));
 
 	return EXIT_SUCCESS;
 }
@@ -34,14 +34,8 @@ void Game::draw(){
 	pressKeysImg.draw();
 	helloText.draw();
 
-	if(isPressTextHidden) {
-
-		hideText.draw();
-	}
-	else{
-		pressText.draw();
-	}
-
+	hideText.draw();
+	pressText.draw();
 }
 
 void Game::handleEvent([[maybe_unused]]const InputEvent& e){
@@ -97,10 +91,14 @@ void Game::handleEvent([[maybe_unused]]const InputEvent& e){
 
 
 		case Keyboard::KEY_M:
-			isPressTextHidden = true;
+			hideText.show();
+			pressText.hide();
+
 		break;
 		case Keyboard::KEY_N:
-			isPressTextHidden = false;
+			hideText.hide();
+			pressText.show();
+
 		break;
 
 
